@@ -1,0 +1,17 @@
+{
+  "name": "MyAlligatorFace2",
+  "displayName": "MyAlligatorFace2",
+  "expo": {
+    "name": "MyAlligatorFace2",
+    "slug": "expo-template-bare",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
