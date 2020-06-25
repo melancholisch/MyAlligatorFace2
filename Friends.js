@@ -1,26 +1,23 @@
 import * as React from 'react';
 import {Button, View, Text } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addFriend } from './FriendsActions';
 
-export default class Friends extends React.Component {    
-    
+
+class Friends extends React.Component {    
     render(){
-        const { navigation } = this.props;
-        const { route } = this.props;
-        const {currentFriends} = route.params;
-        const {possibleFriends} = route.params;
-        const { addFriend } = route.params;
-        
-
+        const { navigation } = this.props;     
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Add friends here!</Text>
 
-        {possibleFriends.map((friend, index) => (
+        {this.props.friends.possible.map((friend, index) => (
             <Button
                 key={ friend }
                 title={`Add ${ friend }`}
                 onPress={() =>
-                addFriend(index)
+                this.props.addFriend(index)
                 }
             />
             )
@@ -36,3 +33,13 @@ export default class Friends extends React.Component {
     );
     }
 }
+const mapStateToProps = (state) => {
+    const { friends } = state
+    return { friends }
+};
+const mapDispatchToProps = dispath => (
+    bindActionCreators({
+        addFriend,
+    }, dispath)
+);
+export default connect(mapStateToProps, mapDispatchToProps)(Friends);
